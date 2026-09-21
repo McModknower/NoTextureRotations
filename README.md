@@ -44,6 +44,8 @@ This mod can either:
 2. Replace the random function with a secure implementation. Will mostly retain the normal visual feel of the game. 
 However, rotations/offsets may appear to shuffle if reloaded. 
 3. Generate a random offset for every chunk. Prevents shifting rotations present in Secure Random.
+4. Use the rotation from the 0, 0 Chunk everywhere. Prevents shifting rotations present in Secure Random.
+Has no chance to leak coordinates other than where in a chunk a block is.
 
 
 

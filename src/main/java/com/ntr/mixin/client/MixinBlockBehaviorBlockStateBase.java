@@ -34,6 +34,9 @@ public abstract class MixinBlockBehaviorBlockStateBase {
                         posRef.get().offset(offset, 0, offset)
                     );
                 }
+                case CHUNK_REPEATING -> {
+                    posRef.set(new BlockPos(pos.getX() & 0xF, pos.getY() & 0xF, pos.getZ() & 0xF));
+                }
             }
         }
     }

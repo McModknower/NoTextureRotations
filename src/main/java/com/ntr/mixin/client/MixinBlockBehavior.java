@@ -26,6 +26,9 @@ public class MixinBlockBehavior {
                     int offset = NoTextureRotations.randomOffsetByChunkCache.getUnchecked(chunkPos);
                     cir.setReturnValue(Mth.getSeed(pos.getX() + offset, pos.getY(), pos.getZ() + offset));
                 }
+                case CHUNK_REPEATING -> {
+                    cir.setReturnValue(Mth.getSeed(pos.getX() & 0xF, pos.getY() & 0xF, pos.getZ() & 0xF));
+                }
             }
         }
     }
