@@ -24,10 +24,10 @@ public class MixinBlockBehavior {
                 case RANDOM_OFFSET -> {
                     var chunkPos = ChunkPos.asLong(pos);
                     int offset = NoTextureRotations.randomOffsetByChunkCache.getUnchecked(chunkPos);
-                    cir.setReturnValue(Mth.getSeed(pos.getX() + offset, pos.getY(), pos.getZ() + offset));
+                    cir.setReturnValue(Mth.getSeed((pos.getX() & 15) + offset, pos.getY(), (pos.getZ() & 15) + offset));
                 }
-                case CHUNK_REPEATING -> {
-                    cir.setReturnValue(Mth.getSeed(pos.getX() & 0xF, pos.getY() & 0xF, pos.getZ() & 0xF));
+                case REPEATING_SECTION -> {
+                    cir.setReturnValue(Mth.getSeed((pos.getX() & 15), pos.getY() & 15, (pos.getZ() & 15)));
                 }
             }
         }
